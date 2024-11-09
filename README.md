@@ -49,5 +49,9 @@ google drive search_files <partial-filename>
 ```
 
 ```bash
-google drive download_file <file-id>
+google drive download_file <file-id1> <file-id2> ...
+```
+
+```bash
+google drive upload_file <filepath1> <filepath2> ...
 ```
