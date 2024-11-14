@@ -59,6 +59,5 @@ google drive upload_file <filepath1> <filepath2> ...
 ## To Do / Improvements
 
 - add --rm flag to upload so that local files are removed when done uploading
-- add functionality for google colab integration
-- add functionality for downloading folders off google drive 
+- add functionality for downloading/uploading folders off google drive 
 - add pydantic schemas for files to ensure correct files are received
