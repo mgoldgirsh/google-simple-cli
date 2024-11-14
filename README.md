@@ -24,7 +24,7 @@ Services used:
 
 Commands Implemented:
 - `download_file` - downloads a file from drive  
-- `upload_file` - upload a file to drive
+- `upload_file` - upload a file or revision to a file to drive
 - `list_files` - list the files recently accessed in drive
 - `search_files` - search by partial filename in drive
 - `show_schedule` - show daily calendar schedule
@@ -55,3 +55,10 @@ google drive download_file <file-id1> <file-id2> ...
 ```bash
 google drive upload_file <filepath1> <filepath2> ...
 ```
+
+## To Do / Improvements
+
+- add --rm flag to upload so that local files are removed when done uploading
+- add functionality for google colab integration
+- add functionality for downloading folders off google drive 
+- add pydantic schemas for files to ensure correct files are received
