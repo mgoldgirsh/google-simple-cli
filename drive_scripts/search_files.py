@@ -3,13 +3,14 @@ from typing import Any, List, Optional, Union
 import utils
 from drive_scripts import list_files
 
-def search_files(service: Any, must_contains: Optional[Union[List[str], str]] = None, printf: bool=True) -> List:
+def search_files(service: Any, must_contains: Optional[Union[List[str], str]] = None, printf: bool = True) -> List:
     """Lists and searches through files that contain the must_contains in the google drive.
 
     Args:
         service (Any): the service to call to perform the list files requests
         must_contains: (Optional[Union[List[str], str]]): the partial filename to search for
         printf (bool): if printf true print to stdout, else do not. Default to True
+        
     Returns:
         List: of files/folders obtained by the drive api call
     """

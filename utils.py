@@ -1,5 +1,17 @@
 from typing import Iterable, List, Tuple
 
+def is_folder(mime: str) -> bool:
+    """Determines whether the inputted mime type is of type folder
+
+    Args:
+        mime (str): the mimeType of the file provided
+
+    Returns:
+        bool: a bool representing whether it is a folder or not
+    """
+    return "folder" in mime
+
+
 def column_format(s1: Iterable[str], s2: Iterable[str], titles: Tuple[str, str] = None) -> List[str]:
     """Returns a formatted string so that a nice column format is maintained
        when outputting text.

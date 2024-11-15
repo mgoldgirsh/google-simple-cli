@@ -23,11 +23,15 @@ Services used:
 - Google Drive (`drive`)
 
 Commands Implemented:
-- `download_file` - downloads a file from drive  
-- `upload_file` - upload a file or revision to a file to drive
-- `list_files` - list the files recently accessed in drive
-- `search_files` - search by partial filename in drive
-- `show_schedule` - show daily calendar schedule
+
+**Drive**
+- `download` - downloads a file or folder from drive  
+- `upload` - upload a file or revision to a file to drive
+- `list` - list the files recently accessed in drive
+- `search` - search by partial filename in drive
+
+**Calendar**
+- `schedule` - show daily calendar schedule
 
 ## Usage
 ### First Time Usage
@@ -35,29 +39,29 @@ You will be asked to authenticate your google account with the google simple cli
 and allow all permissions. 
 A `token.json` file will be generated.
 
-### Commands
+### Commands Usage
 ```bash
-google calendar show_schedule 
+google calendar schedule 
 ```
 
 ```bash
-google drive list_files <num-files-to-list>
+google drive list <num-files-to-list>
 ```
 
 ```bash
-google drive search_files <partial-filename>
+google drive search <partial-filename>
 ```
 
 ```bash
-google drive download_file <file-id1> <file-id2> ...
+google drive download "<file-id1/filename>" "<file-id2/filename>" ...
 ```
 
 ```bash
-google drive upload_file <filepath1> <filepath2> ...
+google drive upload "<filepath1>" "<filepath2>" ...
 ```
 
 ## To Do / Improvements
 
 - add --rm flag to upload so that local files are removed when done uploading
-- add functionality for downloading/uploading folders off google drive 
 - add pydantic schemas for files to ensure correct files are received
+- add autocomplete + prediction to filename exploration.

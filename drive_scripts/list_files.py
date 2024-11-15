@@ -19,7 +19,7 @@ def list_files(service: Any, num_files: int) -> List:
         .list(pageSize=num_files, 
               supportsAllDrives=True, 
               includeItemsFromAllDrives=True, 
-              fields="nextPageToken, files(id, name)", 
+              fields="nextPageToken, files(id, name, mimeType)", 
               orderBy="recency desc")
         .execute()
     )
@@ -30,7 +30,8 @@ def list_files(service: Any, num_files: int) -> List:
       return
     
     print(f"\nTop {num_files} Most Recently Opened Files/Folders:")
-    column_formatted = utils.column_format(list(map(lambda i: i['name'], items)), 
+    print_folder = lambda mime: " (f)" if utils.is_folder(mime) else ""
+    column_formatted = utils.column_format([item['name'] + print_folder(item['mimeType']) for item in items], 
                                            list(map(lambda i: i['id'], items)), 
                                            titles=("Filename", "File Id"))
     print("\n".join(column_formatted))
