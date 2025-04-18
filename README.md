@@ -29,6 +29,7 @@ Commands Implemented:
 - `upload` - upload a file or revision to a file to drive
 - `list` - list the files recently accessed in drive
 - `search` - search by partial filename in drive
+- `open` - open a webbrowser to a partial filename search
 
 **Calendar**
 - `schedule` - show daily calendar schedule

@@ -1,24 +1,30 @@
 #!/usr/bin/env python
 
 import argparse
+import os
 from typing import List
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+from google.auth.exceptions import RefreshError
 
 from auth import authenticate
-from drive_scripts import download, list_files, search_files, upload
+from drive_scripts import download, list_files, search_files, open_file, upload
 from calendar_scripts import show_schedule
 
 SERVICE_NAMES = ['drive', 'calendar']
-CMD_NAMES = ['download', 'upload', 'list', 'search', 'schedule']
+CMD_NAMES = ['download', 'upload', 'list', 'search', 'open', 'schedule']
 
 def run_service(service: str, cmd: str, args: List):
   """
   Run the specified service and the command inputted with the args passed.
   """
   # Step 1. authenticate with the google cloud api
-  creds = authenticate()  
-
+  try: 
+    creds = authenticate()  
+  except RefreshError:
+    os.remove(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'token.json'))
+    creds = authenticate()
+  
   # Step 2. Build the respective services and run them with the args
   try:
     service = build(service, "v3", credentials=creds)
@@ -46,6 +52,9 @@ def run_service(service: str, cmd: str, args: List):
     
     elif cmd == 'search':
       search_files.search_files(service, args)
+      
+    elif cmd == 'open':
+      open_file.open_file(service, args)
     
     elif cmd == "schedule":
       # TODO - figure out how to make specific show schedule command args

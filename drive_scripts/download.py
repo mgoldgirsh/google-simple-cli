@@ -1,7 +1,7 @@
 import io
 import os
 import zipfile
-import tqdm
+from tqdm import tqdm
 from pathlib import Path
 from typing import Any
 from googleapiclient.http import MediaIoBaseDownload
@@ -39,7 +39,7 @@ def download_file(service: Any, file_descriptor: str) -> None:
         )
         
         if utils.is_folder(file_metadata['mimeType']):
-            return download_folder.download_folder(service, file_id, file_metadata['name'])
+            return download_folder(service, file_id, file_metadata['name'])
         
         formatted_mime, ext = utils.mime_to_format(file_metadata['mimeType'])
         # Tried to download a folder
